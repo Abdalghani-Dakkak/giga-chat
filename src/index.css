@@ -1,0 +1,308 @@
+:root {
+  --main-color: #438bf6;
+  --secondary-color: #ffff00;
+  --span-color: #aaa;
+  --message-color: #fff;
+  --text-color: #000;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --main-color: #131417;
+    --secondary-color: #2124f7;
+    --message-color: #242527;
+    --text-color: #fff;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Tahoma, sans-serif;
+
+  /* For Firefox */
+  scrollbar-width: thin;
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: 3px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--main-color);
+}
+
+ul {
+  list-style: none;
+}
+
+ul li {
+  transition: 0.3s;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -ms-transition: 0.3s;
+  -o-transition: 0.3s;
+  cursor: pointer;
+}
+
+ul li:hover {
+  color: var(--secondary-color) !important;
+}
+
+span {
+  color: var(--span-color);
+}
+
+input:focus {
+  outline: none;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.bottom-bar {
+  background-color: var(--main-color);
+}
+
+.navbar-brand {
+  color: var(--secondary-color) !important;
+}
+
+.nav-toggler {
+  border: 2px solid #fff;
+}
+
+span.navbar-toggler-icon {
+  background: none;
+  position: relative;
+}
+span.navbar-toggler-icon::after {
+  content: "";
+  position: absolute;
+  top: 20%;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: #fff;
+  border-radius: 2px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  transform-origin: 0% 50%;
+  transition: 0.3s;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -ms-transition: 0.3s;
+  -o-transition: 0.3s;
+}
+span.navbar-toggler-icon::before {
+  content: "";
+  position: absolute;
+  top: 70%;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: #fff;
+  border-radius: 2px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  transform-origin: 0% 50%;
+  transition: 0.3s;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -ms-transition: 0.3s;
+  -o-transition: 0.3s;
+}
+
+.nav-toggler:hover span.navbar-toggler-icon::after {
+  width: 120%;
+  transform: rotate(25deg);
+  -webkit-transform: rotate(25deg);
+  -moz-transform: rotate(25deg);
+  -ms-transform: rotate(25deg);
+  -o-transform: rotate(25deg);
+}
+.nav-toggler:hover span.navbar-toggler-icon::before {
+  width: 120%;
+  transform: rotate(-25deg);
+  -webkit-transform: rotate(-25deg);
+  -moz-transform: rotate(-25deg);
+  -ms-transform: rotate(-25deg);
+  -o-transform: rotate(-25deg);
+}
+
+.nav-toggler:focus {
+  box-shadow: none;
+}
+
+.nav-link:hover {
+  color: var(--secondary-color) !important;
+}
+
+.active {
+  color: var(--secondary-color) !important;
+  transition: 0.3s;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -ms-transition: 0.3s;
+  -o-transition: 0.3s;
+}
+
+.sidebar {
+  width: 22%;
+  height: 90vh;
+  background-color: var(--main-color);
+  border-inline-end: 2px solid var(--span-color);
+  margin-bottom: 10vh;
+  overflow-y: auto;
+}
+
+@media (min-width: 992px) {
+  .the-chat-parent {
+    width: 78%;
+  }
+}
+
+@media (max-width: 991px) {
+  .sidebar {
+    width: 100%;
+  }
+
+  .the-chat {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+}
+
+.card-user {
+  transition: 0.3s;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -ms-transition: 0.3s;
+  -o-transition: 0.3s;
+  cursor: pointer;
+}
+
+.card-user:hover {
+  background-color: #0c6dff;
+}
+
+/* .sidebar .active {
+  background-color: #0c6dff;
+} */
+
+.user-chat {
+  background-color: var(--main-color);
+}
+
+.messages {
+  background-image: url("./assets/imgs/Telegram-Background.jpg");
+}
+
+.write-message,
+.message-input {
+  color: var(--text-color);
+  background-color: var(--message-color);
+}
+
+.the-message {
+  color: var(--text-color);
+  background-color: var(--message-color) !important;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+
+.the-message::before {
+  content: "";
+  position: absolute;
+  left: -10px;
+  bottom: 0;
+  border: 10px solid;
+  border-color: transparent var(--message-color) var(--message-color)
+    transparent;
+}
+
+.the-message-sended {
+  color: var(--text-color);
+  background-color: var(--main-color) !important;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  transform: translateX(-100%);
+  -webkit-transform: translateX(-100%);
+  -moz-transform: translateX(-100%);
+  -ms-transform: translateX(-100%);
+  -o-transform: translateX(-100%);
+}
+
+.the-message-sended::after {
+  content: "";
+  position: absolute;
+  right: -10px;
+  bottom: 0;
+  border: 10px solid;
+  border-color: transparent transparent var(--main-color) var(--main-color);
+}
+
+.custom-file-upload,
+.message-actions,
+.send-message {
+  color: var(--span-color);
+  transition: 0.3s;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -ms-transition: 0.3s;
+  -o-transition: 0.3s;
+  cursor: pointer;
+}
+
+.custom-file-upload:hover,
+.message-actions:hover {
+  color: var(--secondary-color);
+}
+
+.send-message:hover {
+  color: var(--main-color);
+}
+
+.back {
+  padding: 5px;
+  border-radius: 25px;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  -ms-border-radius: 25px;
+  -o-border-radius: 25px;
+  cursor: pointer;
+}
+
+.back:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.avatar {
+  width: 50px;
+  height: 50px;
+  background-image: url(./assets/imgs/Avatar-Profile-Vector-PNG-Cutout.png);
+  background-size: cover;
+  margin-inline-end: 10px;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
