@@ -3,23 +3,23 @@ import { useState } from "react";
 import Message from "./Message";
 import EmojiPicker from "emoji-picker-react";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { send } from "../rtk/Slices/MessagesSlice";
 
 export default function UserChat() {
   const [inputEmpty, setInputEmpty] = useState(true);
   const [emojiPickerOpen, setEmojiPickerOpen] = useState(false);
   const [message, setMessage] = useState("");
-  const [messages, setMessages] = useState([]);
-  const [onResize, setOnResize] = useState(0);
+
+  const messagesState = useSelector((state) => state.messages);
+  const dispatch = useDispatch();
+  console.log(messagesState);
 
   // const user = useContext(User);
 
-  window.onresize = () => {
-    setOnResize(prev => prev + 1);
-  }
-
   window.onkeydown = (e) => {
     if (e.key === "Enter" && !inputEmpty) {
-      setMessages((prev) => [...prev, message]);
+      dispatch(send(message));
       setMessage("");
       setEmojiPickerOpen(false);
       setInputEmpty(true);
@@ -27,8 +27,8 @@ export default function UserChat() {
   };
 
   return (
-    <div className="the-chat h-100 d-flex flex-column justify-content-between">
-      <header className="user-chat d-flex justify-content-between p-2 ps-3 pe-3">
+    <div className="the-chat d-flex flex-column justify-content-between">
+      <header className="user-chat d-flex justify-content-between p-2 ps-3 pe-3 position-fixed top-0 end-0 z-1">
         <div className="text-light d-flex align-items-center">
           {document.body.clientWidth < 992 && (
             <Link
@@ -58,19 +58,22 @@ export default function UserChat() {
       </header>
       <div className="h-100 d-flex flex-column">
         <div id="messageContainer" className="messages flex-fill p-2 ps-4 pe-4">
-          <Message message="Hello world" time="10:34 PM" />
-          {messages.map((message, index) => (
-            <div
-              key={index}
-              className="the-message-sended bg-white position-relative start-100 d-flex justify-content-between w-25 p-1 ps-3 pe-3 mt-2 mb-2"
-            >
-              <p className="fs-5">{message}</p>
-              <span className="align-self-end">12:00 AM</span>
-            </div>
-          ))}
-        </div>
-        <div className="write-message d-flex w-100 ps-2 pe-2">
           <div>
+            <Message message="Hello world" time="10:34 PM" />
+          </div>
+          <div className="d-flex flex-column align-items-end">
+            {messagesState.map((message, index) => (
+              <Message
+                key={index}
+                sended={true}
+                message={message}
+                time="12:00 AM"
+              />
+            ))}
+          </div>
+        </div>
+        <div className="write-message d-flex ps-2 pe-2 position-fixed bottom-0 end-0">
+          <div className="d-flex justtify-content-center align-items-center">
             <label htmlFor="file-upload" className="custom-file-upload fs-1">
               <i className="bi bi-link-45deg" />
             </label>
@@ -116,7 +119,7 @@ export default function UserChat() {
           ) : (
             <button
               onClick={() => {
-                setMessages((prev) => [...prev, message]);
+                dispatch(send(message));
                 setMessage("");
                 setEmojiPickerOpen(false);
                 setInputEmpty(true);

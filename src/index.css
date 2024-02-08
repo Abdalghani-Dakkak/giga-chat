@@ -168,7 +168,13 @@ span.navbar-toggler-icon::before {
 @media (min-width: 992px) {
   .the-chat-parent {
     width: 78%;
+    margin-bottom: 10vh;
   }
+}
+
+.the-chat {
+  height: 90vh;
+  overflow-y: auto !important;
 }
 
 @media (max-width: 991px) {
@@ -177,6 +183,7 @@ span.navbar-toggler-icon::before {
   }
 
   .the-chat {
+    height: 100vh;
     position: absolute;
     top: 0;
     left: 0;
@@ -203,10 +210,18 @@ span.navbar-toggler-icon::before {
 
 .user-chat {
   background-color: var(--main-color);
+  width: 78%;
+}
+@media (max-width: 991px) {
+  .user-chat {
+    width: 100%;
+  }
 }
 
 .messages {
   background-image: url("./assets/imgs/Telegram-Background.jpg");
+  padding-bottom: 56px !important;
+  padding-top: 78px !important;
 }
 
 .write-message,
@@ -215,9 +230,24 @@ span.navbar-toggler-icon::before {
   background-color: var(--message-color);
 }
 
-.the-message {
+.write-message {
+  width: 78%;
+  margin-bottom: 10vh;
+}
+
+@media (max-width: 991px) {
+  .write-message {
+    width: 100%;
+    margin-bottom: 0;
+  }
+}
+
+.the-message,
+.the-message-sended {
+  width: fit-content;
+  max-width: 50%;
   color: var(--text-color);
-  background-color: var(--message-color) !important;
+  background-color: var(--message-color);
   border-radius: 10px;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
@@ -225,7 +255,45 @@ span.navbar-toggler-icon::before {
   -o-border-radius: 10px;
 }
 
-.the-message::before {
+.the-message-sended {
+  background-color: var(--main-color);
+}
+
+.before {
+  display: inline-block;
+  border: 10px solid;
+  border-color: transparent;
+  border-inline-end-color: var(--message-color);
+  border-block-end-color: var(--message-color);
+  margin-inline-start: -12px;
+}
+
+.the-message-sended ~ div > .before {
+  border-color: transparent;
+  border-inline-start-color: var(--main-color);
+  border-block-end-color: var(--main-color);
+  margin-inline-start: auto;
+  margin-inline-end: -12px;
+}
+
+.the-message p,
+.the-message-sended p {
+  font-size: 20px;
+  text-wrap: stable !important;
+}
+
+@media (max-width: 650px) {
+  .the-message,
+  .the-message-sended {
+    max-width: 100%;
+  }
+  .the-message p,
+  .the-message-sended p {
+    font-size: 16px;
+  }
+}
+
+/* .the-message::before {
   content: "";
   position: absolute;
   left: -10px;
@@ -235,21 +303,6 @@ span.navbar-toggler-icon::before {
     transparent;
 }
 
-.the-message-sended {
-  color: var(--text-color);
-  background-color: var(--main-color) !important;
-  border-radius: 10px;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  -ms-border-radius: 10px;
-  -o-border-radius: 10px;
-  transform: translateX(-100%);
-  -webkit-transform: translateX(-100%);
-  -moz-transform: translateX(-100%);
-  -ms-transform: translateX(-100%);
-  -o-transform: translateX(-100%);
-}
-
 .the-message-sended::after {
   content: "";
   position: absolute;
@@ -257,7 +310,7 @@ span.navbar-toggler-icon::before {
   bottom: 0;
   border: 10px solid;
   border-color: transparent transparent var(--main-color) var(--main-color);
-}
+} */
 
 .custom-file-upload,
 .message-actions,
@@ -281,13 +334,20 @@ span.navbar-toggler-icon::before {
 }
 
 .back {
-  padding: 5px;
+  padding: 2px;
+  padding-inline-start: 5px;
+  padding-inline-end: 5px;
   border-radius: 25px;
   -webkit-border-radius: 25px;
   -moz-border-radius: 25px;
   -ms-border-radius: 25px;
   -o-border-radius: 25px;
+  transition: 0.3s;
   cursor: pointer;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -ms-transition: 0.3s;
+  -o-transition: 0.3s;
 }
 
 .back:hover {
@@ -295,8 +355,8 @@ span.navbar-toggler-icon::before {
 }
 
 .avatar {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   background-image: url(./assets/imgs/Avatar-Profile-Vector-PNG-Cutout.png);
   background-size: cover;
   margin-inline-end: 10px;

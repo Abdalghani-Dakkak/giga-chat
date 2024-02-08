@@ -8,15 +8,19 @@ import UserProvider from "./Pages/Website/Context/UserContext";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.min.css";
 import "./index.css";
+import { Provider } from "react-redux";
+import { store } from "./rtk/Store";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <Router>
-      <UserProvider>
+    <Provider store={store}>
+      <Router>
+        {/* <UserProvider> */}
+        {/* </UserProvider> */}
         <App />
-      </UserProvider>
-    </Router>
+      </Router>
+    </Provider>
   </React.StrictMode>
 );
 
