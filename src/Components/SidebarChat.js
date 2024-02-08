@@ -28,17 +28,44 @@ export default function SideBarChat() {
       {/* <div key={index}> */}
       <NavLink to={`1`} className="nav-link">
         <Card />
+      </NavLink>
+      <NavLink to={`2`} className="nav-link">
         <Card />
+      </NavLink>
+      <NavLink to={`3`} className="nav-link">
         <Card />
+      </NavLink>
+      <NavLink to={`4`} className="nav-link">
         <Card />
+      </NavLink>
+      <NavLink to={`5`} className="nav-link">
         <Card />
+      </NavLink>
+      <NavLink to={`6`} className="nav-link">
         <Card />
+      </NavLink>
+      <NavLink to={`7`} className="nav-link">
         <Card />
+      </NavLink>
+      <NavLink to={`8`} className="nav-link">
         <Card />
+      </NavLink>
+      <NavLink to={`9`} className="nav-link">
         <Card />
+      </NavLink>
+      <NavLink to={`10`} className="nav-link">
         <Card />
+      </NavLink>
+      <NavLink to={`11`} className="nav-link">
         <Card />
+      </NavLink>
+      <NavLink to={`12`} className="nav-link">
         <Card />
+      </NavLink>
+      <NavLink to={`13`} className="nav-link">
+        <Card />
+      </NavLink>
+      <NavLink to={`14`} className="nav-link">
         <Card />
       </NavLink>
       {/* </div> */}

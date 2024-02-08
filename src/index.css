@@ -156,6 +156,13 @@ span.navbar-toggler-icon::before {
   -o-transition: 0.3s;
 }
 
+@media (min-width: 992px) {
+  .the-chat-parent {
+    width: 78%;
+    margin-bottom: 10vh;
+  }
+}
+
 .sidebar {
   width: 22%;
   height: 90vh;
@@ -163,13 +170,6 @@ span.navbar-toggler-icon::before {
   border-inline-end: 2px solid var(--span-color);
   margin-bottom: 10vh;
   overflow-y: auto;
-}
-
-@media (min-width: 992px) {
-  .the-chat-parent {
-    width: 78%;
-    margin-bottom: 10vh;
-  }
 }
 
 .the-chat {
@@ -180,6 +180,7 @@ span.navbar-toggler-icon::before {
 @media (max-width: 991px) {
   .sidebar {
     width: 100%;
+    border: none;
   }
 
   .the-chat {
@@ -204,9 +205,9 @@ span.navbar-toggler-icon::before {
   background-color: #0c6dff;
 }
 
-/* .sidebar .active {
+.sidebar .active {
   background-color: #0c6dff;
-} */
+}
 
 .user-chat {
   background-color: var(--main-color);
@@ -294,25 +295,6 @@ span.navbar-toggler-icon::before {
     font-size: 16px;
   }
 }
-
-/* .the-message::before {
-  content: "";
-  position: absolute;
-  left: -10px;
-  bottom: 0;
-  border: 10px solid;
-  border-color: transparent var(--message-color) var(--message-color)
-    transparent;
-}
-
-.the-message-sended::after {
-  content: "";
-  position: absolute;
-  right: -10px;
-  bottom: 0;
-  border: 10px solid;
-  border-color: transparent transparent var(--main-color) var(--main-color);
-} */
 
 .custom-file-upload,
 .message-actions,
