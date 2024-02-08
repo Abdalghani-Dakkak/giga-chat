@@ -278,8 +278,10 @@ span.navbar-toggler-icon::before {
 
 .the-message p,
 .the-message-sended p {
+  max-width: 100%;
   font-size: 20px;
-  text-wrap: stable !important;
+  text-wrap: wrap;
+  word-wrap: break-word;
 }
 
 @media (max-width: 650px) {
