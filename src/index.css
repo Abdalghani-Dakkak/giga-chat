@@ -1,18 +1,5 @@
 :root {
-  --main-color: #438bf6;
-  --secondary-color: #ffff00;
   --span-color: #aaa;
-  --message-color: #fff;
-  --text-color: #000;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --main-color: #131417;
-    --secondary-color: #2124f7;
-    --message-color: #242527;
-    --text-color: #fff;
-  }
 }
 
 * {
@@ -25,32 +12,15 @@ body {
   font-family: Arial, Tahoma, sans-serif;
 
   /* For Firefox */
-  scrollbar-width: thin;
-  scroll-behavior: smooth;
+  scrollbar-width: 0;
 }
 
 ::-webkit-scrollbar {
-  width: 3px;
-}
-::-webkit-scrollbar-thumb {
-  background-color: var(--main-color);
+  display: none;
 }
 
 ul {
   list-style: none;
-}
-
-ul li {
-  transition: 0.3s;
-  -webkit-transition: 0.3s;
-  -moz-transition: 0.3s;
-  -ms-transition: 0.3s;
-  -o-transition: 0.3s;
-  cursor: pointer;
-}
-
-ul li:hover {
-  color: var(--secondary-color) !important;
 }
 
 span {
@@ -63,14 +33,6 @@ input:focus {
 
 input[type="file"] {
   display: none;
-}
-
-.bottom-bar {
-  background-color: var(--main-color);
-}
-
-.navbar-brand {
-  color: var(--secondary-color) !important;
 }
 
 .nav-toggler {
@@ -143,210 +105,16 @@ span.navbar-toggler-icon::before {
   box-shadow: none;
 }
 
-.nav-link:hover {
-  color: var(--secondary-color) !important;
-}
-
-.active {
-  color: var(--secondary-color) !important;
-  transition: 0.3s;
-  -webkit-transition: 0.3s;
-  -moz-transition: 0.3s;
-  -ms-transition: 0.3s;
-  -o-transition: 0.3s;
-}
-
-@media (min-width: 992px) {
-  .the-chat-parent {
-    width: 78%;
-    margin-bottom: 10vh;
-  }
-}
-
-.sidebar {
-  width: 22%;
-  height: 90vh;
-  background-color: var(--main-color);
-  border-inline-end: 2px solid var(--span-color);
-  margin-bottom: 10vh;
-  overflow-y: auto;
-}
-
-.the-chat {
-  height: 90vh;
-  overflow-y: auto !important;
-}
-
-@media (max-width: 991px) {
-  .sidebar {
-    width: 100%;
-    border: none;
-  }
-
-  .the-chat {
-    height: 100vh;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-  }
-}
-
-.card-user {
-  transition: 0.3s;
-  -webkit-transition: 0.3s;
-  -moz-transition: 0.3s;
-  -ms-transition: 0.3s;
-  -o-transition: 0.3s;
-  cursor: pointer;
-}
-
-.card-user:hover {
-  background-color: #0c6dff;
-}
-
-.sidebar .active {
-  background-color: #0c6dff;
-}
-
-.user-chat {
-  background-color: var(--main-color);
-  width: 78%;
-}
-@media (max-width: 991px) {
-  .user-chat {
-    width: 100%;
-  }
-}
-
 .messages {
   background-image: url("./assets/imgs/Telegram-Background.jpg");
+  background-attachment: fixed;
   padding-bottom: 56px !important;
   padding-top: 78px !important;
 }
 
-.write-message,
-.message-input {
-  color: var(--text-color);
-  background-color: var(--message-color);
-}
-
-.write-message {
-  width: 78%;
-  margin-bottom: 10vh;
-}
-
-@media (max-width: 991px) {
-  .write-message {
-    width: 100%;
-    margin-bottom: 0;
-  }
-}
-
-.the-message,
-.the-message-sended {
-  width: fit-content;
-  max-width: 50%;
-  color: var(--text-color);
-  background-color: var(--message-color);
-  border-radius: 10px;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  -ms-border-radius: 10px;
-  -o-border-radius: 10px;
-}
-
-.the-message-sended {
-  background-color: var(--main-color);
-}
-
-.before {
-  display: inline-block;
-  border: 10px solid;
-  border-color: transparent;
-  border-inline-end-color: var(--message-color);
-  border-block-end-color: var(--message-color);
-  margin-inline-start: -12px;
-}
-
-.the-message-sended ~ div > .before {
-  border-color: transparent;
-  border-inline-start-color: var(--main-color);
-  border-block-end-color: var(--main-color);
-  margin-inline-start: auto;
-  margin-inline-end: -12px;
-}
-
-.the-message p,
-.the-message-sended p {
-  max-width: 100%;
-  font-size: 20px;
-  text-wrap: wrap;
-  word-wrap: break-word;
-}
-
-@media (max-width: 650px) {
-  .the-message,
-  .the-message-sended {
-    max-width: 100%;
-  }
-  .the-message p,
-  .the-message-sended p {
-    font-size: 16px;
-  }
-}
-
-.custom-file-upload,
-.message-actions,
-.send-message {
-  color: var(--span-color);
-  transition: 0.3s;
-  -webkit-transition: 0.3s;
-  -moz-transition: 0.3s;
-  -ms-transition: 0.3s;
-  -o-transition: 0.3s;
-  cursor: pointer;
-}
-
-.custom-file-upload:hover,
-.message-actions:hover {
-  color: var(--secondary-color);
-}
-
-.send-message:hover {
-  color: var(--main-color);
-}
-
-.back {
-  padding: 2px;
-  padding-inline-start: 5px;
-  padding-inline-end: 5px;
-  border-radius: 25px;
-  -webkit-border-radius: 25px;
-  -moz-border-radius: 25px;
-  -ms-border-radius: 25px;
-  -o-border-radius: 25px;
-  transition: 0.3s;
-  cursor: pointer;
-  -webkit-transition: 0.3s;
-  -moz-transition: 0.3s;
-  -ms-transition: 0.3s;
-  -o-transition: 0.3s;
-}
-
-.back:hover {
-  background-color: rgba(0, 0, 0, 0.7);
-}
-
-.avatar {
-  width: 40px;
-  height: 40px;
-  background-image: url(./assets/imgs/Avatar-Profile-Vector-PNG-Cutout.png);
-  background-size: cover;
-  margin-inline-end: 10px;
-  border-radius: 50%;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  -ms-border-radius: 50%;
-  -o-border-radius: 50%;
+.line-clamp {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
 }

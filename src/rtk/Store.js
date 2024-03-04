@@ -1,8 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
-import messagesSlice from "./Slices/MessagesSlice";
+import MessagesSlice from "./Slices/MessagesSlice";
+import ThemesSlice from "./Slices/ThemesSlice";
+import UsersSlice from "./Slices/UsersSlice";
 
 export const store = configureStore({
   reducer: {
-    messages: messagesSlice,
+    messages: MessagesSlice,
+    users: UsersSlice,
+    theme: ThemesSlice,
   },
 });

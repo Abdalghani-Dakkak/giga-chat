@@ -1,11 +1,31 @@
-// import { useContext } from "react";
-// import { User } from "../Pages/Website/Context/UserContext";
+import styled from "styled-components";
 
-export default function Card() {
-  // const user = useContext(User);
+const CardUser = styled.div.attrs(() => ({
+  className: "d-flex justify-content-betwen w-100 p-2",
+}))`
+  transition: 0.3s;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -ms-transition: 0.3s;
+  -o-transition: 0.3s;
+  cursor: pointer;
 
+  &:hover {
+    background-color: #0c6dff;
+  }
+`;
+const MessagesCount = styled.span.attrs(() => ({
+  className: "d-flex justify-content-center align-items-center",
+}))`
+  min-width: 25px;
+  height: 25px;
+  background-color: ${(props) => props.theme.secondary};
+  border-radius: 50%;
+`;
+
+export default function Card(props) {
   return (
-    <div className="d-flex justify-content-betwen w-100 p-2 card-user">
+    <CardUser>
       <div className="d-flex justify-content-center align-items-center me-2">
         <img
           src={require("../assets/imgs/Avatar-Profile-Vector-PNG-Cutout.png")}
@@ -15,25 +35,15 @@ export default function Card() {
       </div>
       <div className="w-100">
         <div className="d-flex justify-content-between align-items-center text-light">
-          <h4>Ahmed</h4>
+          <h6 className="line-clamp">{props.name}</h6>
           <span style={{ fontSize: "14px" }}>10:34 PM</span>
         </div>
 
         <div className="d-flex justify-content-between align-items-center text-light">
-          <span>Hello</span>
-          <span
-            className="d-flex justify-content-center align-items-center"
-            style={{
-              width: "25px",
-              height: "25px",
-              backgroundColor: "var(--secondary-color)",
-              borderRadius: "50%",
-            }}
-          >
-            4
-          </span>
+          <span className="line-clamp">{props.lastMessage}</span>
+          <MessagesCount>{props.messagesCount}</MessagesCount>
         </div>
       </div>
-    </div>
+    </CardUser>
   );
 }

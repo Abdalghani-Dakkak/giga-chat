@@ -1,32 +1,54 @@
 import { NavLink } from "react-router-dom";
 import Card from "./Card";
-// import { User } from "../Pages/Website/Context/UserContext";
-// import { useContext, useEffect } from "react";
+import styled from "styled-components";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { fetchUsers } from "../rtk/Slices/UsersSlice";
+import { fetchMesssages } from "../rtk/Slices/MessagesSlice";
+
+const Sidebar = styled.div.attrs(() => ({
+  className: "pt-2 pb-2",
+}))`
+  width: 22%;
+  height: 90vh;
+  background-color: ${(props) => props.theme.main};
+  border-inline-end: 2px solid ${(props) => props.theme.span};
+  margin-bottom: 10vh;
+  overflow-y: auto;
+  @media (max-width: 991px) {
+    width: 100%;
+    border: none;
+  }
+
+  & .active {
+    background-color: #0c6dff;
+  }
+`;
 
 export default function SideBarChat() {
-  // let users = [];
+  const usersState = useSelector((state) => state.users);
+  const messages = useSelector((state) => state.messages);
+  const dispatch = useDispatch();
 
-  // const user = useContext(User);
+  useEffect(() => {
+    dispatch(fetchUsers());
+    dispatch(fetchMesssages());
+  }, [dispatch]);
 
-  // useEffect(() => {
-  //   user.setUsers({
-  //     id: 1,
-  //     name: "Ahmed",
-  //     message: "Hello world",
-  //     messageCount: "4",
-  //     time: "10:34 PM",
-  //   });
-  // }, []);
-
-  // for (let i = 0; i <= 30; i++) {
-  //   users.push(user.users);
-  // }
+  console.log(messages);
 
   return (
-    <div className="sidebar pt-2 pb-2">
-      {/* {users.map((user, index) => ( */}
-      {/* <div key={index}> */}
-      <NavLink to={`1`} className="nav-link">
+    <Sidebar>
+      {usersState.map((user, index) => (
+        <NavLink key={index} to={`${user.id}`} className="nav-link">
+          <Card
+            name={user.name}
+            messagesCount={messages[index].length}
+            lastMessage={messages[index][messages[index].length - 1]}
+          />
+        </NavLink>
+      ))}
+      {/* <NavLink to={`1`} className="nav-link">
         <Card />
       </NavLink>
       <NavLink to={`2`} className="nav-link">
@@ -67,9 +89,7 @@ export default function SideBarChat() {
       </NavLink>
       <NavLink to={`14`} className="nav-link">
         <Card />
-      </NavLink>
-      {/* </div> */}
-      {/* ))} */}
-    </div>
+      </NavLink> */}
+    </Sidebar>
   );
 }
