@@ -1,4 +1,15 @@
 .loader {
+  width: 100px;
+  height: 100px;
   display: block;
-  border: #fff transparent;
+  border: 10px solid;
+  border-color: #fff transparent;
+  border-radius: 50%;
+  animation: loader 1s linear infinite;
+}
+
+@keyframes loader {
+  to {
+    transform: rotate(360deg);
+  }
 }

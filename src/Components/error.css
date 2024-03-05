@@ -1,0 +1,10 @@
+.refrech-btn {
+  border: 2px solid #dc3545;
+  border-radius: 10px !important;
+  transition: 0.3s;
+}
+
+.refrech-btn:hover {
+  color: #fff !important;
+  background-color: #dc3545;
+}

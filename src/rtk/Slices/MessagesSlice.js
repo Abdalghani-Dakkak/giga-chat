@@ -1,5 +1,4 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-// import Loader from "../../Components/Loader";
 
 export const fetchMesssages = createAsyncThunk(
   "messagesSlice/fetchMesssages",
@@ -17,26 +16,44 @@ export const fetchMesssages = createAsyncThunk(
             usersMessages[counter].push(message.title);
           }
         });
-        return usersMessages;
+        return {
+          data: usersMessages,
+          setLoading: false,
+          error: false,
+        };
       });
   }
 );
 
 const messagesSlice = createSlice({
-  initialState: [],
+  initialState: {
+    data: [],
+    setLoading: false,
+    error: false,
+  },
   name: "messagesSlice",
   reducers: {
     send: (state, action) => {
-      state[action.payload.index].push(action.payload.title);
-      return state;
+      state.data[action.payload.index].push(action.payload.title);
     },
   },
   extraReducers: (builder) => {
-    // builder.addCase(fetchMesssages.pending, () => {
-    //   return <Loader />;
-    // });
+    builder.addCase(fetchMesssages.pending, () => {
+      return {
+        data: [],
+        setLoading: true,
+        error: false,
+      };
+    });
     builder.addCase(fetchMesssages.fulfilled, (state, action) => {
       return action.payload;
+    });
+    builder.addCase(fetchMesssages.rejected, () => {
+      return {
+        data: [],
+        setLoading: false,
+        error: true,
+      };
     });
   },
 });

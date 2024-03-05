@@ -9,4 +9,8 @@ export const store = configureStore({
     users: UsersSlice,
     theme: ThemesSlice,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }),
 });

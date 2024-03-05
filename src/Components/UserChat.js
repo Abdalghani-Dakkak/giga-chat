@@ -7,6 +7,8 @@ import { fetchMesssages, send } from "../rtk/Slices/MessagesSlice";
 import styled from "styled-components";
 
 import avatar from "../assets/imgs/Avatar-Profile-Vector-PNG-Cutout.png";
+
+import Loader from "./Loader";
 import { fetchUsers } from "../rtk/Slices/UsersSlice";
 
 const Avatar = styled.div`
@@ -157,11 +159,10 @@ export default function UserChat() {
   const messages = useSelector((state) => state.messages);
   const usersState = useSelector((state) => state.users);
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchUsers());
-    dispatch(fetchMesssages());
-  }, [dispatch]);
+  if (!messages || !usersState) {
+    dispatch(fetchUsers);
+    dispatch(fetchMesssages);
+  }
 
   let selectedUser = undefined;
   if (usersState.length > 0)
@@ -172,11 +173,9 @@ export default function UserChat() {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
-  const userMessages = messages.filter(
+  const userMessages = messages.data.filter(
     (m, index) => index + 1 === Number(id)
   )[0];
-  console.log(messages);
-  console.log(userMessages);
 
   useEffect(() => {
     scrollToBottom();
@@ -225,13 +224,19 @@ export default function UserChat() {
       </Header>
       <div className="h-100 d-flex flex-column">
         <div id="messageContainer" className="messages flex-fill p-2 ps-4 pe-4">
-          {userMessages.map((message, index) =>
-            index % 2 !== 0 ? (
-              <Message key={index} message={message} time="10:34 PM" />
-            ) : (
-              <div key={index} className="d-flex flex-column align-items-end">
-                <Message sended={true} message={message} time="12:30 AM" />
-              </div>
+          {messages.setLoading && !messages.error ? (
+            <Loader />
+          ) : messages.error ? (
+            <div>error</div>
+          ) : (
+            userMessages.map((message, index) =>
+              index % 2 !== 0 ? (
+                <Message key={index} message={message} time="10:34 PM" />
+              ) : (
+                <div key={index} className="d-flex flex-column align-items-end">
+                  <Message sended={true} message={message} time="12:30 AM" />
+                </div>
+              )
             )
           )}
           <div ref={messagesEndRef} />

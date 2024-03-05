@@ -12,7 +12,7 @@ const ChatParent = styled.div`
 `;
 
 export default function Chat() {
-  const [onResize, setOnResize] = useState(0);
+  const [, setOnResize] = useState(0);
 
   window.onresize = () => {
     setOnResize((prev) => prev + 1);
