@@ -285,7 +285,7 @@ export default function UserChat() {
               onClick={() => {
                 dispatch(
                   send({
-                    id: 2,
+                    index: id - 1,
                     title: message,
                   })
                 );
